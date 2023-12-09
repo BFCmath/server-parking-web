@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();  
 app.use(express.json());
 app.use(cors({
-    origin: ["https://bfcmath.github.io/ParkingManagementWeb_user"],
+    origin: [process.env.ORIGIN],
     methods: ["GET", "POST"],
     credentials: true
 }));
