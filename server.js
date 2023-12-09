@@ -118,7 +118,7 @@ app.get('/user-information', (req, res) => {
     });
 });
 app.post('/parking-data/pay', (req, res) => {
-    const parkingSQL = "UPDATE parking_event SET is_paid = 1 WHERE student_id = ? AND is_paid = 0 AND price is not NULL; ";
+    const parkingSQL = "UPDATE parking_event SET is_paid = 1 WHERE student_id = ? AND is_paid = 0 AND time_out is not NULL;";
     parkingDatabase.query(parkingSQL, [req.body.student_id], (err, result) => {
         if (err) {
             console.error('Error paying parking:', err);
