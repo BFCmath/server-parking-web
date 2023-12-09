@@ -221,7 +221,8 @@ app.post('/login', (req, res) => {
                 'fwt-secret-key',
                 { expiresIn: '1h' }
             );
-            res.cookie('token', token);
+            console.log(token);
+            res.cookie('token', token, { secure: true, sameSite: 'None' });
             return res.json({Status: "Success"});
         });
     });
