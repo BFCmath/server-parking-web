@@ -135,9 +135,10 @@ app.post('/parking-data/pay', (req, res) => {
     });
 });
 app.get('/logout', (req, res) => {
-    res.clearCookie('token');
+    res.clearCookie('token', { secure: true, sameSite: 'None' });
     return res.json({Status: "Success"});
 });
+
 app.post('/user-information/add-money', (req, res) => {
     const addMoneySql = "UPDATE user_information SET saving = saving + ? WHERE student_id = ?";
     userDatabase.query(addMoneySql, [req.body.money_add, req.body.student_id], (err, result) => {
